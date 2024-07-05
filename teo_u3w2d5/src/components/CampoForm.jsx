@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
-function CampoForm({ search, setCity, setSearchApi }) {
+function CampoForm() {
+  const [city, setCity] = useState("");
+
   const searchCityFetch = () => {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=10&appid=d64c9eea3930483f07c2c26cbb66be20`)
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=10&appid=d64c9eea3930483f07c2c26cbb66be20`)
       .then((resp) => {
         if (resp.ok) {
           return resp.json();
@@ -11,7 +14,7 @@ function CampoForm({ search, setCity, setSearchApi }) {
         }
       })
       .then((data) => {
-        setSearchApi(data);
+        console.log(data);
       })
       .catch((e) => {
         console.error("Errore!", e);
@@ -22,12 +25,12 @@ function CampoForm({ search, setCity, setSearchApi }) {
     <Container>
       <Row>
         <Form.Group as={Col} md={12} controlId="validationCustom03">
-          <Form.Label>Search your City</Form.Label>
+          <Form.Label className="fs-4">Search your City</Form.Label>
           <Form.Control
             type="text"
             placeholder="City"
             required
-            value={search}
+            value={city}
             onChange={(e) => setCity(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">Please provide a valid city.</Form.Control.Feedback>

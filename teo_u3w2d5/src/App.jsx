@@ -4,22 +4,29 @@ import { Container } from "react-bootstrap";
 import NavBarT from "./components/NavBarT.jsx";
 import CenterComp from "./components/CenterComp.jsx";
 import CampoForm from "./components/CampoForm.jsx";
-import { useState } from "react";
+
 import ResultApi from "./components/ResultApi.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [city, setCity] = useState("");
-  const [searchApi, setSearchApi] = useState(null);
-
   return (
-    <>
+    <BrowserRouter>
       <NavBarT />
       <Container className="text-center">
-        <CenterComp titolo="Welcome to Teo Pi Weather" />
-        <CampoForm search={city} setCity={setCity} setSearchApi={setSearchApi} />
-        {searchApi && <ResultApi searchApi={searchApi} />}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <CenterComp titolo="Welcome to Teo Pi Weather" />
+                <CampoForm />
+              </>
+            }
+          />
+          <Route path="/result/:lat/:lon" element={<ResultApi />} />
+        </Routes>
       </Container>
-    </>
+    </BrowserRouter>
   );
 }
 
