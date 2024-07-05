@@ -1,27 +1,39 @@
-import Form from "react-bootstrap/Form";
-import { useState, useEffect } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
-function CampoForm() {
-  const [city, setCity] = useState("Roma");
+function CampoForm({ search, setCity, setSearchApi }) {
+  const searchCityFetch = () => {
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=10&appid=d64c9eea3930483f07c2c26cbb66be20`)
+      .then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        } else {
+          throw new Error("Errore nella chiamata");
+        }
+      })
+      .then((data) => {
+        setSearchApi(data);
+      })
+      .catch((e) => {
+        console.error("Errore!", e);
+      });
+  };
 
-  useEffect(() => {
-    console.log(city);
-  }, [city]);
   return (
     <Container>
       <Row>
         <Form.Group as={Col} md={12} controlId="validationCustom03">
-          <Form.Label>City</Form.Label>
+          <Form.Label>Search your City</Form.Label>
           <Form.Control
             type="text"
             placeholder="City"
             required
-            value={city}
+            value={search}
             onChange={(e) => setCity(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">Please provide a valid city.</Form.Control.Feedback>
-          <Button className="mt-3 ">Search</Button>
+          <Button onClick={searchCityFetch} className="mt-3 btn btn-dark">
+            Search
+          </Button>
         </Form.Group>
       </Row>
     </Container>
