@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function CampoForm() {
   const [city, setCity] = useState("");
+  const navigate = useNavigate();
 
   const searchCityFetch = () => {
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=10&appid=d64c9eea3930483f07c2c26cbb66be20`)
@@ -15,6 +17,11 @@ function CampoForm() {
       })
       .then((data) => {
         console.log(data);
+        if (data.length > 0) {
+          navigate(`/result/${data[0].lat}/${data[0].lon}`);
+        } else {
+          console.error("Nessun dato trovato!");
+        }
       })
       .catch((e) => {
         console.error("Errore!", e);

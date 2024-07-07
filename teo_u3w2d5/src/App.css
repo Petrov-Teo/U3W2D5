@@ -25,3 +25,8 @@ body {
 .opacity {
   opacity: 60%;
 }
+.city {
+  transform: scale(1.1);
+  translate: 20px 4rem 150px;
+  top: 0;
+}
