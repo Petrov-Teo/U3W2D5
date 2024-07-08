@@ -16,6 +16,7 @@ body {
   overflow: hidden;
   font-family: "Lato", sans-serif;
   font-style: italic;
+  color: #143f66;
 }
 .navbarOpacity {
   opacity: 60%;
@@ -24,9 +25,18 @@ body {
 }
 .opacity {
   opacity: 60%;
+  background-color: #143f66;
+  border: none;
 }
 .city {
   transform: scale(1.1);
   translate: 20px 4rem 150px;
   top: 0;
+}
+.buttonsColor {
+  background-color: #143f66;
+  border: none;
+}
+.buttonsColor:hover {
+  background-color: #ebc099;
 }

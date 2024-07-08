@@ -9,12 +9,12 @@ const CenterComp = (props) => {
             className="navbarOpacity mt-3"
             src="https://www.forumforyou.it/Image/meteo_script.gif"
             alt="Logo"
-            width="100"
-            height="100"
+            width="120"
+            height="120"
           />
         </Col>
         <Col xs={12}>
-          <h1 className="my-5">{props.titolo}</h1>
+          <h1 className="my-3 display-1">{props.titolo}</h1>
         </Col>
       </Row>
     </Container>

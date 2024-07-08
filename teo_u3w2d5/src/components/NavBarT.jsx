@@ -1,22 +1,22 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { GiBoomerangSun } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const NavBarT = () => {
   return (
-    <Navbar expand="lg" className="navbar bg-dark border-bottom border-body text-light navbarOpacity border border-0">
+    <Navbar expand="lg" className="text-light navbarOpacity opacity ">
       <Container className="text-light">
-        <Navbar.Brand href="#home" className="text-light">
-          <GiBoomerangSun className="iconLogo me-5" /> Teo Pi Weather
+        <Navbar.Brand>
+          <Link className="text-light link-offset-2 link-underline link-underline-opacity-0" to={"/Info"}>
+            {" "}
+            Teo Pi Weather
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" className="text-light">
+            <Link className="nav-link text-light" to={"/"}>
               Home
-            </Nav.Link>
-            <Nav.Link href="#link" className="text-light">
-              Link
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -32,8 +32,9 @@ function CampoForm() {
     <Container>
       <Row>
         <Form.Group as={Col} md={12} controlId="validationCustom03">
-          <Form.Label className="fs-4">Search your City</Form.Label>
+          <Form.Label className="display-2 ">Search your City</Form.Label>
           <Form.Control
+            className="mt-3"
             type="text"
             placeholder="City"
             required
@@ -41,7 +42,7 @@ function CampoForm() {
             onChange={(e) => setCity(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">Please provide a valid city.</Form.Control.Feedback>
-          <Button onClick={searchCityFetch} className="mt-3 btn btn-dark">
+          <Button onClick={searchCityFetch} className="mt-5 buttonsColor">
             Search
           </Button>
         </Form.Group>
